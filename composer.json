@@ -1,0 +1,16 @@
+{
+  "name": "deluxcms/sqldebug",
+  "description": "collect yii2 debug sql data",
+  "keywords": ["yii2", "deluxcms", "sqldebug"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "smister",
+      "email": "398009951@qq.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": { "deluxcms\\sqldebug\\": "" }
+  }
+}

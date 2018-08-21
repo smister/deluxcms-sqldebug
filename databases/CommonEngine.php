@@ -44,8 +44,8 @@ class CommonEngine
     */
     protected function getCategory($category)
     {
-        $textArr = explode(':', $category);
-        if (count($textArr) > 2) {
+        $textArr = explode('::', $category);
+        if (count($textArr) >= 2) {
             if (in_array(strtolower($textArr[0]), $this->sqlSign)) {
                 return $textArr[1];
             }

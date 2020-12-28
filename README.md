@@ -5,7 +5,7 @@
  1、下载deluxcms-sqldebug组件
  ---------------------------
  ```
- composer require deluxcms/deluxcms-sqldebug
+ composer require deluxcms/sqldebug
  ```
  
 2、创建数据表
@@ -20,7 +20,7 @@ CREATE TABLE `debug_api` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='DEBUG访问接口';
 
-CREATE TABLE `xg_debug_api_sql` (
+CREATE TABLE `debug_api_sql` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `debug_api_id` int(11) DEFAULT NULL COMMENT '关联api',
   `info` text COMMENT '执行语句',
@@ -40,6 +40,11 @@ CREATE TABLE `xg_debug_api_sql` (
 [
     'components' => [
         ...
+            'redis' => [
+                'class' => 'yii\redis\Connection',
+                'hostname' => '127.0.0.1',
+                'port' => 6379
+            ],
             'sqldebug' => [
                 'class' => 'deluxcms\sqldebug\components\SqlDebug',
                 'type' => 'redis', //目前支持redis,mysql
@@ -104,7 +109,7 @@ class SqlDebugController extends Controller
 }
 
 2) 执行监听
-php yii sql-debuig/index
+php yii sql-debug/index
 ```
 
 7、配置config/main-local.php文件,添加sqldebug模块查看数据
